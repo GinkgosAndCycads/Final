@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
  */
 public class StudentGUI extends javax.swing.JFrame {
     Student s[];
-    int size, curstud;
+    int size, currentstudent;
     /**
      * Creates new form StudentGUI
      */
@@ -19,7 +19,7 @@ public class StudentGUI extends javax.swing.JFrame {
         initComponents();
         s = new Student[10];
         size = 0;
-        curstud = -1;
+        currentstudent = -1;
     }
 
     /**
@@ -232,7 +232,7 @@ public class StudentGUI extends javax.swing.JFrame {
         String em = temp.validateData();
         if (em ==null){
             s[size] = temp;
-            curstud = size;
+            currentstudent = size;
             size++;
             showStudent();
         }
@@ -257,23 +257,23 @@ public class StudentGUI extends javax.swing.JFrame {
 
     private void btnfirstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnfirstActionPerformed
         // TODO add your handling code here: 
-         if (curstud>0){
-            curstud=0;
+         if (currentstudent>0){
+            currentstudent=0;
             showStudent();
         }
     }//GEN-LAST:event_btnfirstActionPerformed
 
     private void btnnextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnnextActionPerformed
         // TODO add your handling code here: 
-         if (curstud<size-1 && curstud>-1){
-            curstud++;
+         if (currentstudent<size-1 && currentstudent>-1){
+            currentstudent++;
             showStudent();
     }//GEN-LAST:event_btnnextActionPerformed
     }
     private void btnprevActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnprevActionPerformed
         // TODO add your handling code here: 
-        if (curstud>0){
-            curstud--;
+        if (currentstudent>0){
+            currentstudent--;
             showStudent();
         }
     }//GEN-LAST:event_btnprevActionPerformed
@@ -281,29 +281,29 @@ public class StudentGUI extends javax.swing.JFrame {
     private void btnmodifyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnmodifyActionPerformed
         // TODO add your handling code here: 
         StudentPopUp spop = new StudentPopUp(this, true);
-        spop.setForm(s[curstud]);
+        spop.setForm(s[currentstudent]);
         spop.setModal(true);
         spop.setLocationRelativeTo(this);
         spop.setVisible(true);
-        s[curstud] = spop.getStudent();
+        s[currentstudent] = spop.getStudent();
         showStudent();
     }//GEN-LAST:event_btnmodifyActionPerformed
 
     private void btnlastActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnlastActionPerformed
         // TODO add your handling code here: 
-        if(curstud<s.length){
-            curstud = size - 1;
+        if(currentstudent<s.length){
+            currentstudent = size - 1;
             showStudent();
             }
     }//GEN-LAST:event_btnlastActionPerformed
 
-    private void showStudent() {   txtname.setText(s[curstud].getName());
-        txtmark1.setText("" +s[curstud].getMark(1));
-        txtmark2.setText("" +s[curstud].getMark(2));
-        txtmark3.setText("" +s[curstud].getMark(3));
-        txtaverage.setText(""+s[curstud].getAverage());
+    private void showStudent() {   txtname.setText(s[currentstudent].getName());
+        txtmark1.setText("" +s[currentstudent].getMark(1));
+        txtmark2.setText("" +s[currentstudent].getMark(2));
+        txtmark3.setText("" +s[currentstudent].getMark(3));
+        txtaverage.setText(""+s[currentstudent].getAverage());
         txtcount.setText("" +size);
-        txtindex.setText("" +curstud);
+        txtindex.setText("" +currentstudent);
     }
 
     /**
